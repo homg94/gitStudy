@@ -10,14 +10,13 @@ public class BoardVO {
 	private String writer;
 	private Date regdate;
 	private Date updateDate;
-	public BoardVO(Long bno, String title, String content, String writer, Date regdate, Date updateDate) {
+	
+	public BoardVO(String title, String content, String writer) {
 		super();
-		this.bno = bno;
 		this.title = title;
 		this.content = content;
 		this.writer = writer;
-		this.regdate = regdate;
-		this.updateDate = updateDate;
+
 	}
 	public BoardVO() {
 		super();
