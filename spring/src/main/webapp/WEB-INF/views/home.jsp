@@ -10,5 +10,8 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+
+Hello ${dto.name}
+your age is ${dto.age } right?
 </body>
 </html>
