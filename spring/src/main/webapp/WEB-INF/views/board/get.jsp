@@ -381,67 +381,49 @@
         <div id="page-wrapper">
 
             <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Tables</h1>
-                </div>
+            
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
-                        <div class="panel-heading">
-                            DataTables Advanced Tables
-                            <button id='regBtn' type="button" class="btn btn-xs pull-right">Register New Board</button>
-                        </div>
+                      
                         <!-- /.panel-heading -->
                         <div class="panel-body">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                                 <thead>
-                                    <tr>
-                                        <th>BNO</th>
-                                        <th>Title</th>
-                                        <th>Writers</th>
-                                        <th>RegDate</th>
-                                        <th>UpdateDate</th>
-                                    </tr>
+                          
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${list}" var="board">
-                                    <tr class="odd gradeX">
-                                        <td><a href='/board/get?bno=<c:out value="${board.bno}"/>'/>${board.bno }</td>
-                                        <td><a href='/board/get?bno=<c:out value="${board.bno}"/>'/>${board.title }</td>
-                                        <td>${board.writer }</td>
-                                        <td><fmt:formatDate value="${board.regdate }" pattern="yyyy/MM/dd"/>
-</td>
-                                        <td><fmt:formatDate value="${board.updateDate }" pattern="yyyy/MM/dd"/>
-</td>
-                                    </tr>
-                                   </c:forEach>
+                                <h1>Detail</h1>
+                             	
+                             	<div class="form-group">
+                             	<label>Bno</label>
+                             	<input class="form-control" name='bno' value="${board.bno}" readonly="readonly">
+                             	</div>
+                             	
+                             	<div class="form-group">
+                             	<label>title</label>
+                             	<input class="form-control" name='title' value="${board.title}" readonly="readonly">
+                             	</div>
+                             	
+                             	<div class="form-group">
+                             	<label>TextArea</label>
+                             	<textarea class="form-control" name='content' value="${board.content}" readonly="readonly" rows="3">"${board.content}"</textarea>
+                             	</div>
+                             	
+                             	<div class="form-group">
+                             	<label>Writer</label>
+                             	<input class="form-control" name='writer' value="${board.writer}" readonly="readonly">
+                             	</div>
+                             
+                             	
                                 </tbody>
                             </table>
+                            <button data-oper='modify' class="btn btn-default" onclick="location.href='/board/modify?bno=<c:out value="${board.bno }"/>'">modify</button>
                             <!-- /.table-responsive -->
-                                 <!-- Modal -->
-                                     <!-- Button trigger modal -->
-                         
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
+                            
                         </div>
                         <!-- /.panel-body -->
                     </div>
@@ -473,36 +455,10 @@
     <!-- Custom Theme JavaScript -->
     <script src="/resources/dist/js/sb-admin-2.js"></script>
 
-
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script type="text/javascript"> 
+    <script>
     $(document).ready(function() {
-  
-    	var result = '<c:out value="${result}"/>';
-    	
-    	checkModal(result);
-    	
-    	history.replaceState({},null,null);
-    	
-    	function checkModal(result){
-    		if(result ==='' ||history.state){
-    			return;
-    		}
-    		
-    		if(parseInt(result)>0){
-    			$(".modal-body").html("게시글 "+ parseInt(result)+ " 번이 등록되었습니다");
-    		}
-    		
-    		$("#myModal").modal("show");
-    		
-    	}
-    	
-    	$("#regBtn").on("click", function(){
-    		self.location = "/board/register"
-    	})
-    	
-    	
-    	
+   
     });
     </script>
 

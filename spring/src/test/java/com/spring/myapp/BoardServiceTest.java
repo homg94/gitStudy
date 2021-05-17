@@ -1,5 +1,8 @@
 package com.spring.myapp;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,6 +15,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.spring.myapp.domain.BoardVO;
+import com.spring.myapp.domain.Criteria;
+import com.spring.myapp.mapper.BoardMapper;
 import com.spring.myapp.service.BoardService;
 
 
@@ -22,23 +27,23 @@ public class BoardServiceTest {
 
 	Logger log = LoggerFactory.getLogger(getClass()); 
 	BoardService boardService;
-	
+	BoardMapper mapper;
 	
 	@BeforeEach
 	public void setting() {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("file:src/main/webapp/WEB-INF/spring/root-context.xml");
 		boardService = (BoardService)ctx.getBean("boardService");
-		
+		 mapper = (BoardMapper)ctx.getBean("boardMapper");
 	}
 	
-	@Test
+	
 	public void testExist() {
 		log.info(boardService.toString());
 		Assertions.assertNotNull(boardService);
 		
 	}
 	
-	@Test
+	
 	public void tesrt() {
 		
 		BoardVO board = boardService.get(13L);
@@ -49,7 +54,7 @@ public class BoardServiceTest {
 		
 	}
 	
-	@Test
+	
 	public void adƮ() {
 		
 		BoardVO test = new BoardVO();
@@ -63,7 +68,15 @@ public class BoardServiceTest {
 	@Test
 	public void aƮ() {
 	
-		Assertions.assertEquals(boardService.remove(2L), true);
+		Criteria cri = new Criteria();
+		
+		cri.setAmount(5);
+		cri.setPageNum(3);
+		List<BoardVO> list = mapper.getListWithPage(cri);
+		
+		
+		log.info(list.toString());
+		Assertions.assertNotNull(list);
 	}
 	
 }

@@ -10,6 +10,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.spring.myapp.domain.BoardVO;
+import com.spring.myapp.domain.Criteria;
 import com.spring.myapp.mapper.BoardMapper;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -24,6 +25,12 @@ public class BoardTest {
 		List<BoardVO> temp = mapper.getList();
 		
 		Assertions.assertNotNull(temp);
+		
+	}
+	
+	@Test
+	public void testPaging() {
+		
 		
 	}
 

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.myapp.domain.BoardVO;
+import com.spring.myapp.domain.Criteria;
 import com.spring.myapp.service.BoardService;
 
 @Controller
@@ -19,12 +20,21 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
+	//@GetMapping("/list")
+	//public String list(Model model) {
+		//System.out.println("list");
+		//model.addAttribute("list", service.getList());
+		//return "/board/list";
+	//}
+	
 	@GetMapping("/list")
-	public String list(Model model) {
-		System.out.println("list");
-		model.addAttribute("list", service.getList());
-		return "/board/list";
+	public void list(Criteria cri, Model model) {
+		model.addAttribute("list", service.getList(cri));
+		System.out.println(cri+" 및 모델 전달");
+		System.out.println(service.getList(cri).toString());
+
 	}
+	
 	
 	@PostMapping("/register")
 	public String register(BoardVO board, RedirectAttributes rttr) {
@@ -58,11 +68,21 @@ public class BoardController {
 		
 		if(service.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
-			System.out.println("���� ����");
+			System.out.println("modify success");
 		}
 		
 		return "redirect:/board/list";
 
+	}
+	
+	@GetMapping("/modify")
+	public String modifyGet(@RequestParam Long bno, Model model) {
+		BoardVO vo = service.get(bno);
+		model.addAttribute("board",vo);
+		
+		System.out.println("getModify called");
+		return "/board/modify";
+		
 	}
 	
 	

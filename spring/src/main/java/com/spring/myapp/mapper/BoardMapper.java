@@ -2,9 +2,8 @@ package com.spring.myapp.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
-
 import com.spring.myapp.domain.BoardVO;
+import com.spring.myapp.domain.Criteria;
 
 public interface BoardMapper {
 
@@ -20,4 +19,6 @@ public interface BoardMapper {
 	public BoardVO read(Long bno);
 	
 	public int update(BoardVO board);
+	
+	public List<BoardVO> getListWithPage(Criteria cri);
 }
