@@ -43,26 +43,13 @@ public class HomeController {
 		logger.info("Mapper={}",boardMapper.getList());
 
 
-	
 
-		BoardVO vo = new BoardVO();
-		vo.setContent("fuck");
-		vo.setTitle("fuck");
-		vo.setWriter("son of a bitch");
-		boardMapper.insert(vo);
-		
-		boardMapper.getList().forEach(a->{
-			System.out.println(a.toString());
-		});
-		
 		
 		//boardMapper.getList().forEach(a->{
 			//System.out.println(a.toString());
 		//});
 		
-		BoardVO vo3 = boardMapper.read(1L);
 		
-		System.out.println(vo3.toString());
 
 		System.out.println(boardMapper.delete(1L));
 		

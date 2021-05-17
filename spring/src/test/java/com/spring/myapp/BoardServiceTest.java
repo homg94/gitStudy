@@ -39,18 +39,18 @@ public class BoardServiceTest {
 	}
 	
 	@Test
-	public void ¼öÁ¤Å×½ºÆ®() {
+	public void tesrt() {
 		
 		BoardVO board = boardService.get(13L);
 		
-		board.setTitle("½Ã¹ß½Ã¹ß½Ã¹ß");
-		log.info("modify °á°ú´Â :"+boardService.modify(board));
+		board.setTitle("ï¿½Ã¹ß½Ã¹ß½Ã¹ï¿½");
+		log.info("modify ï¿½ï¿½ï¿½ï¿½ï¿½ :"+boardService.modify(board));
 		Assertions.assertEquals(boardService.modify(board), true);
 		
 	}
 	
 	@Test
-	public void µî·ÏÅ×½ºÆ®() {
+	public void adÆ®() {
 		
 		BoardVO test = new BoardVO();
 		test.setContent("test13");
@@ -61,7 +61,7 @@ public class BoardServiceTest {
 	}
 	
 	@Test
-	public void »èÁ¦Å×½ºÆ®() {
+	public void aÆ®() {
 	
 		Assertions.assertEquals(boardService.remove(2L), true);
 	}

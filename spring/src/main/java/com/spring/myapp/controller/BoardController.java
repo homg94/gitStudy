@@ -20,9 +20,10 @@ public class BoardController {
 	private BoardService service;
 	
 	@GetMapping("/list")
-	public void list(Model model) {
+	public String list(Model model) {
 		System.out.println("list");
 		model.addAttribute("list", service.getList());
+		return "/board/list";
 	}
 	
 	@PostMapping("/register")
@@ -32,9 +33,16 @@ public class BoardController {
 		System.out.println(service.get(board.getBno()));
 		rttr.addFlashAttribute("result", board.getBno());
 		
-		return "redirect : /board/list";
+		return "redirect:/board/list";
 		
 	}
+	
+	@GetMapping("/register")
+	public String registerGet() {
+		System.out.println("ë ˆì§€ìŠ¤í„° í˜ì´ì§€ ì‘ë™");
+		return "/board/register";
+	}
+	
 	
 	
 	@GetMapping("/get")
@@ -50,7 +58,7 @@ public class BoardController {
 		
 		if(service.modify(board)) {
 			rttr.addFlashAttribute("result", "success");
-			System.out.println("¼öÁ¤ ¼º°ø");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}
 		
 		return "redirect:/board/list";
@@ -64,7 +72,7 @@ public class BoardController {
 		System.out.println("remove :" + bno);
 		if(service.remove(bno)) {
 			rttr.addFlashAttribute("resu;t","success");
-			System.out.println("¼º°ø");
+			System.out.println("ï¿½ï¿½ï¿½ï¿½");
 		}
 		
 		return "redirect:/board/list";
