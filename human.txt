@@ -1,1 +1,2 @@
 name : minsoo
+안녕하세요
